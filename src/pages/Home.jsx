@@ -1,6 +1,8 @@
 import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
+
 import { fetchTrendingMovies } from 'service/api';
+import { Container, Section, PageTitle } from 'styles';
 
 // import MovieList from '../components/MovieList/MovieList';
 
@@ -30,11 +32,14 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      {isLoading && <p> Ждемссссссс.....</p>}
-      {error && <p>Жопа</p>}
-      <MovieList movies={movies} />
-    </>
+    <Section>
+      <Container>
+        <PageTitle>Trending today</PageTitle>
+        {isLoading && <p> Ждемссссссс.....</p>}
+        {error && <p>Жопа</p>}
+        <MovieList movies={movies} />
+      </Container>
+    </Section>
   );
 };
 

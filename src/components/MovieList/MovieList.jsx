@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
 import { GiFilmProjector } from 'react-icons/gi';
+import { FilmsList, FilmItem, FilmName, DateFilm } from './MovieList.styled';
 
 const MovieList = ({ movies }) => {
   return (
-    <ul>
+    <FilmsList>
       {movies.map(({ id, title, release_date }) => (
-        <li key={id}>
+        <FilmItem key={id}>
           <GiFilmProjector size="32" />
-          <span>{title}</span>
-          <span>Date of release: {release_date}</span>
-        </li>
+          <FilmName>{title}</FilmName>
+          <DateFilm>
+            Date of release: <span>{release_date}</span>
+          </DateFilm>
+        </FilmItem>
       ))}
-    </ul>
+    </FilmsList>
   );
 };
 
