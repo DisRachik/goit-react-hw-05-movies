@@ -10,10 +10,10 @@ const SharedLayout = () => {
           <Navigation>
             <NavigationSite>
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/">Популярні сьогодні</NavLink>
               </li>
               <li>
-                <NavLink to="/movies">Gallery</NavLink>
+                <NavLink to="/movies">Пошук по назві</NavLink>
               </li>
             </NavigationSite>
           </Navigation>

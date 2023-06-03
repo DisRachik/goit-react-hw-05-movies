@@ -10,7 +10,7 @@ const MovieList = ({ movies }) => {
           <GiFilmProjector size="32" />
           <FilmName>{title}</FilmName>
           <DateFilm>
-            Date of release: <span>{release_date}</span>
+            дата виходу: <span>{release_date}</span>
           </DateFilm>
         </FilmItem>
       ))}

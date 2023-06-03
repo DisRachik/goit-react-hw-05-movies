@@ -3,14 +3,15 @@ import styled from '@emotion/styled';
 export const FilmsList = styled.ul`
   margin-top: ${props => props.theme.spacing(5)};
   width: 70%;
+  max-width: ${props => props.theme.spacing(155)};
 `;
 
 export const FilmItem = styled.li`
   display: flex;
   align-items: center;
-  gap: ${props => props.theme.spacing(5)};
+  gap: ${props => props.theme.spacing(3)};
 
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-top: ${props => props.theme.spacing(2.5)};
   }
 `;
