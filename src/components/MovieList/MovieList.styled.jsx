@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 
 export const FilmsList = styled.ul`
   margin-top: ${props => props.theme.spacing(5)};
-  width: 70%;
-  max-width: ${props => props.theme.spacing(155)};
+  width: 75%;
+  max-width: ${props => props.theme.spacing(180)};
 `;
 
 export const FilmItem = styled.li`

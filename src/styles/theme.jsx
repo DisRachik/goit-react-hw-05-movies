@@ -1,12 +1,11 @@
 export const theme = Object.freeze({
   colors: {
     accent: '#D1913C',
+    blue: '#c9d6ff',
     dark: '#302b63',
     red: '#f27777',
     gray: '#9e9e9e',
     light: '#f2f2f2',
-    buttonBackground: ['linear-gradient(to bottom, #c9d6ff,  #e2e2e2)'],
-    cardBackground: ['linear-gradient(to right, #0f0c29, #302b63, #24243e)'],
   },
   fontSizes: {
     small: '16px',

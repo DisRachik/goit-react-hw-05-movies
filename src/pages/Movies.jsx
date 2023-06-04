@@ -22,11 +22,11 @@ const Movies = () => {
 
     const controller = new AbortController();
 
+    setIsLoading(true);
     fetchSearchMovies(query, controller)
       .then(data => {
-        setIsLoading(true);
-        setMovies(data);
         setError(null);
+        setMovies(data);
       })
       .catch(err => {
         setError('Something went wrong, try again!');

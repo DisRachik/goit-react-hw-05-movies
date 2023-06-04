@@ -11,11 +11,12 @@ const Home = () => {
 
   useEffect(() => {
     const controller = new AbortController();
+
+    setIsLoading(true);
     fetchTrendingMovies(controller)
       .then(data => {
-        setIsLoading(true);
-        setMovies(data);
         setError(null);
+        setMovies(data);
       })
       .catch(err => {
         setError('Something went wrong, try again!');

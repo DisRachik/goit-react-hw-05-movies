@@ -27,3 +27,12 @@ export const fetchSearchMovies = async (query, { signal }) => {
     release_date,
   }));
 };
+
+export const fetchAboutMovie = async (movie_id, { signal }) => {
+  const params = { ...BASE_PARAMS };
+  const response = await axios(`movie/${movie_id}`, { params, signal });
+  const { title, vote_average, overview, genres, poster_path, release_date } =
+    response.data;
+  const genre = genres.map(item => item.name).join(', ');
+  return { poster_path, title, vote_average, overview, genre, release_date };
+};

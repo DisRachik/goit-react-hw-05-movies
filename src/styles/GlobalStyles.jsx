@@ -37,7 +37,6 @@ export const GlobalStyles = css`
 
   button {
     padding: 0;
-    border: none;
     font: inherit;
     color: inherit;
     background-color: transparent;

@@ -16,14 +16,14 @@ export const NavLink = styled(RouteNavLink)`
   display: block;
   padding: ${props => props.theme.spacing(2)} ${props => props.theme.spacing(4)};
 
-  background: ${props => props.theme.colors.buttonBackground};
+  background-color: ${props => props.theme.colors.blue};
   border: ${props => props.theme.spacing(0.25)} solid
     ${props => props.theme.colors.gray};
   border-radius: ${props => props.theme.spacing(2)};
   box-shadow: ${props => props.theme.shadows.regular};
 
   transition: ${props =>
-    props.theme.animation('background, box-shadow, color')};
+    props.theme.animation('background-color, box-shadow, color')};
 
   &:hover,
   &:focus {
@@ -32,7 +32,7 @@ export const NavLink = styled(RouteNavLink)`
 
   &.active {
     color: ${props => props.theme.colors.light};
-    background: ${props => props.theme.colors.red};
+    background-color: ${props => props.theme.colors.red};
     box-shadow: ${props => props.theme.shadows.medium};
   }
 `;
