@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { MovieCard, loader } from 'components';
 import { fetchAboutMovie } from 'service/api';
 import { ButtonLink, ButtonLinkWrap, Container, Section } from 'styles';
@@ -9,6 +9,8 @@ const MovieDetails = () => {
   const [infoFilm, setInfoFilm] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const goBack = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const controller = new AbortController();
@@ -35,7 +37,7 @@ const MovieDetails = () => {
     <>
       <Section>
         <Container>
-          <button type="button">назад</button>
+          <ButtonLink to={goBack.current}>назад</ButtonLink>
           {isLoading && <loader.CardLoader />}
           {error && <p>{error}</p>}
           <MovieCard {...infoFilm} />

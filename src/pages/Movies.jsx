@@ -21,13 +21,15 @@ const Movies = () => {
     const controller = new AbortController();
 
     setIsLoading(true);
+    setMovies([]);
     fetchSearchMovies(query, controller)
       .then(data => {
         setError(null);
+        if (!data.length) throw new Error();
         setMovies(data);
       })
       .catch(err => {
-        setError('Something went wrong, try again!');
+        setError('Щось пішло не так!!! Спробуй ще раз...');
       })
       .finally(() => {
         setIsLoading(false);
@@ -49,18 +51,11 @@ const Movies = () => {
     <Section>
       <Container>
         <PageTitle>Пошук фільму</PageTitle>
+        <SearchForMovie value={query} onSubmit={onSearchSubmit} />
         {isLoading && <loader.TaskList />}
         {error && <p>{error}</p>}
-        <SearchForMovie value={query} onSubmit={onSearchSubmit} />
 
-        {movies.length ? (
-          <MovieList movies={movies} />
-        ) : (
-          <p>
-            За даною назвою нічого не знайдено, спробуйте змінити назву фільму
-            для пошуку
-          </p>
-        )}
+        <MovieList movies={movies} />
       </Container>
     </Section>
   );

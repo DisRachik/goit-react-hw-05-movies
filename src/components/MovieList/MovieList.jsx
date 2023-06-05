@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import { GiFilmProjector } from 'react-icons/gi';
 import { MdOutlineReadMore } from 'react-icons/md';
 import { FilmsList, FilmItem, FilmName, DateFilm } from './MovieList.styled';
 import { ButtonLink } from 'styles';
 
 const MovieList = ({ movies }) => {
+  const location = useLocation();
+
   return (
     <FilmsList>
       {movies.map(({ id, title, release_date }) => (
@@ -14,7 +17,7 @@ const MovieList = ({ movies }) => {
           <DateFilm>
             дата виходу: <span>{release_date}</span>
           </DateFilm>
-          <ButtonLink to={`/movies/${id}`}>
+          <ButtonLink to={`/movies/${id}`} state={{ from: location }}>
             Опис <MdOutlineReadMore size="24" />
           </ButtonLink>
         </FilmItem>
