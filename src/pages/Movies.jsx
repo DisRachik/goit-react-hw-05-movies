@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
-import SearchForMovie from 'components/SearchForMovie/SearchForMovie';
 import { Container, Section, PageTitle } from 'styles';
 import { fetchSearchMovies } from 'service/api';
-import MovieList from 'components/MovieList/MovieList';
+import { SearchForMovie, MovieList, loader } from 'components';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -51,10 +49,18 @@ const Movies = () => {
     <Section>
       <Container>
         <PageTitle>Пошук фільму</PageTitle>
+        {isLoading && <loader.TaskList />}
+        {error && <p>{error}</p>}
         <SearchForMovie value={query} onSubmit={onSearchSubmit} />
-        {isLoading && <p> Ждемссссссс.....</p>}
-        {error && <p>Жопа</p>}
-        <MovieList movies={movies} />
+
+        {movies.length ? (
+          <MovieList movies={movies} />
+        ) : (
+          <p>
+            За даною назвою нічого не знайдено, спробуйте змінити назву фільму
+            для пошуку
+          </p>
+        )}
       </Container>
     </Section>
   );

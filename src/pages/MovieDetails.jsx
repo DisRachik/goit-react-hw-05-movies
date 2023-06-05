@@ -1,9 +1,8 @@
-import MovieCard from 'components/MovieCard/MovieCard';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
+import { MovieCard, loader } from 'components';
 import { fetchAboutMovie } from 'service/api';
-
-import { Container, Section } from 'styles';
+import { ButtonLink, ButtonLinkWrap, Container, Section } from 'styles';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -21,7 +20,7 @@ const MovieDetails = () => {
         setInfoFilm(data);
       })
       .catch(err => {
-        setError('Something went wrong, try again!');
+        setError('Щось пішло не так!!! Спробуй ще раз...');
       })
       .finally(() => {
         setIsLoading(false);
@@ -36,19 +35,21 @@ const MovieDetails = () => {
     <>
       <Section>
         <Container>
-          {isLoading && <p> Ждемссссссс.....</p>}
-          {error && <p>Жопа</p>}
-
           <button type="button">назад</button>
+          {isLoading && <loader.CardLoader />}
+          {error && <p>{error}</p>}
           <MovieCard {...infoFilm} />
         </Container>
       </Section>
 
       <Section>
         <Container>
-          <h2>додаткова інформація</h2>
-          <button type="button">акторський склад</button>
-          <button type="button">відгуки</button>
+          <h2>Додаткова інформація</h2>
+          <ButtonLinkWrap>
+            <ButtonLink to="cast">Aктори</ButtonLink>
+            <ButtonLink to="reviews">Bідгуки</ButtonLink>
+          </ButtonLinkWrap>
+          <Outlet />
         </Container>
       </Section>
     </>

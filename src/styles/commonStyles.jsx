@@ -41,3 +41,9 @@ export const ButtonLink = styled(Link)`
     }
   }
 `;
+export const ButtonLinkWrap = styled.div`
+  margin-top: ${props => props.theme.spacing(4)};
+  max-width: 30%;
+  display: flex;
+  justify-content: space-between;
+`;

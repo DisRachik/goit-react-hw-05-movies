@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { GiFilmProjector } from 'react-icons/gi';
 import { MdOutlineReadMore } from 'react-icons/md';
 import { FilmsList, FilmItem, FilmName, DateFilm } from './MovieList.styled';

@@ -1,6 +1,5 @@
-import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
-
+import { loader, MovieList } from 'components';
 import { fetchTrendingMovies } from 'service/api';
 import { Container, Section, PageTitle } from 'styles';
 
@@ -19,7 +18,7 @@ const Home = () => {
         setMovies(data);
       })
       .catch(err => {
-        setError('Something went wrong, try again!');
+        setError('Щось пішло не так!!! Спробуй ще раз...');
       })
       .finally(() => {
         setIsLoading(false);
@@ -34,8 +33,8 @@ const Home = () => {
     <Section>
       <Container>
         <PageTitle>Сьогодні в тренді</PageTitle>
-        {isLoading && <p> Ждемссссссс.....</p>}
-        {error && <p>Жопа</p>}
+        {isLoading && <loader.TaskList />}
+        {error && <p>{error}</p>}
         <MovieList movies={movies} />
       </Container>
     </Section>

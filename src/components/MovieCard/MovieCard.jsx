@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import NotImage from '../../images/no-img.jpg';
 import { PageTitle } from 'styles';
 import { FilmWrap, ImageWrap, FilmInfo } from './MovieCard.styled';
 
@@ -15,7 +16,10 @@ const MovieCard = ({
   return (
     <FilmWrap>
       <ImageWrap>
-        <img src={`${BASE_IMG_URL}${poster_path}`} alt="Постер фільму" />
+        <img
+          src={poster_path ? `${BASE_IMG_URL}${poster_path}` : NotImage}
+          alt="Постер фільму"
+        />
       </ImageWrap>
       <FilmInfo>
         <PageTitle>

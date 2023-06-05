@@ -1,3 +1,3 @@
 export * from 'styles/GlobalStyles';
 export * from 'styles/theme';
-export * from './commonStyles';
+export * from 'styles/commonStyles';

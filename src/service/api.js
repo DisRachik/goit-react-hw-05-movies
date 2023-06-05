@@ -36,3 +36,25 @@ export const fetchAboutMovie = async (movie_id, { signal }) => {
   const genre = genres.map(item => item.name).join(', ');
   return { poster_path, title, vote_average, overview, genre, release_date };
 };
+
+export const fetchCast = async (movie_id, { signal }) => {
+  const params = { ...BASE_PARAMS };
+  const response = await axios(`movie/${movie_id}/credits`, { params, signal });
+  return response.data.cast.map(({ id, name, character, profile_path }) => ({
+    id,
+    name,
+    character,
+    profile_path,
+  }));
+};
+
+export const fetchReviews = async (movie_id, { signal }) => {
+  const response = await axios(`movie/${movie_id}/reviews?api_key=${API_KEY}`, {
+    signal,
+  });
+  return response.data.results.map(({ id, author, content }) => ({
+    id,
+    author,
+    content,
+  }));
+};
