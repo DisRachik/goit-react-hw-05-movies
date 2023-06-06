@@ -19,7 +19,7 @@ export const PageTitle = styled.h1`
 export const ButtonLink = styled(Link)`
   padding: 0 ${props => props.theme.spacing(2)};
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: ${props => props.theme.spacing(2)};
 

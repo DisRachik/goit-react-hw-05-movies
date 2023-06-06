@@ -9,6 +9,7 @@ export const FilmWrap = styled.div`
 
 export const ImageWrap = styled.div`
   flex-basis: 35%;
+  max-width: 500px;
   box-shadow: ${props => props.theme.shadows.regular};
 `;
 

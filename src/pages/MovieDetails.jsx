@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { TiArrowBackOutline, TiArrowDownOutline } from 'react-icons/ti';
 import { MovieCard, loader } from 'components';
 import { fetchAboutMovie } from 'service/api';
 import { ButtonLink, ButtonLinkWrap, Container, Section } from 'styles';
@@ -37,7 +38,9 @@ const MovieDetails = () => {
     <>
       <Section>
         <Container>
-          <ButtonLink to={goBack.current}>назад</ButtonLink>
+          <ButtonLink to={goBack.current}>
+            <TiArrowBackOutline /> назад
+          </ButtonLink>
           {isLoading && <loader.CardLoader />}
           {error && <p>{error}</p>}
           <MovieCard {...infoFilm} />
@@ -48,8 +51,12 @@ const MovieDetails = () => {
         <Container>
           <h2>Додаткова інформація</h2>
           <ButtonLinkWrap>
-            <ButtonLink to="cast">Aктори</ButtonLink>
-            <ButtonLink to="reviews">Bідгуки</ButtonLink>
+            <ButtonLink to="cast">
+              <TiArrowDownOutline /> Aктори
+            </ButtonLink>
+            <ButtonLink to="reviews">
+              Bідгуки <TiArrowDownOutline />
+            </ButtonLink>
           </ButtonLinkWrap>
 
           <Suspense fallback={<loader.ThreeDots />}>

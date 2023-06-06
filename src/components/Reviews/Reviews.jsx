@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { loader } from 'components';
 import { fetchReviews } from 'service/api';
+import { ReviewsList, ReviewItem } from './Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -35,14 +36,14 @@ const Reviews = () => {
       {isLoading && <loader.ThreeDots />}
       {error && <p>{error}</p>}
       {reviews.length ? (
-        <ul>
+        <ReviewsList>
           {reviews.map(({ id, author, content }) => (
-            <li key={id}>
+            <ReviewItem key={id}>
               <h3>{author}</h3>
               <p>{content}</p>
-            </li>
+            </ReviewItem>
           ))}
-        </ul>
+        </ReviewsList>
       ) : (
         <p>Вибачте, ще ніхто не написав відгуків...</p>
       )}

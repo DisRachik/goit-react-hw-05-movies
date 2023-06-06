@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import NotImage from '../../images/no-img.jpg';
 import { loader } from 'components';
 import { fetchCast } from 'service/api';
+import { ActorGallery, ActorCard, ActorName, ActorRole } from './Cast.styled';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -38,18 +39,18 @@ const Cast = () => {
       {isLoading && <loader.NetflixLoader />}
       {error && <p>{error}</p>}
       {actors.length ? (
-        <ul>
+        <ActorGallery>
           {actors.map(({ id, name, character, profile_path }) => (
-            <li key={id}>
+            <ActorCard key={id}>
               <img
                 src={profile_path ? `${BASE_IMG_URL}${profile_path}` : NotImage}
                 alt={name}
               />
-              <h3>{name}</h3>
-              <p>{character}</p>
-            </li>
+              <ActorName>{name}</ActorName>
+              <ActorRole>{character}</ActorRole>
+            </ActorCard>
           ))}
-        </ul>
+        </ActorGallery>
       ) : (
         <p>Вибачте, у нас немає інформації стосовно цього фільму.</p>
       )}
