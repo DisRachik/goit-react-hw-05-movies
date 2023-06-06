@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { MovieCard, loader } from 'components';
 import { fetchAboutMovie } from 'service/api';
@@ -51,7 +51,10 @@ const MovieDetails = () => {
             <ButtonLink to="cast">Aктори</ButtonLink>
             <ButtonLink to="reviews">Bідгуки</ButtonLink>
           </ButtonLinkWrap>
-          <Outlet />
+
+          <Suspense fallback={<loader.ThreeDots />}>
+            <Outlet />
+          </Suspense>
         </Container>
       </Section>
     </>

@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { loader } from 'components';
 import { Navigation, NavigationSite, NavLink } from './SharedLayout.styled';
 import { Container } from 'styles';
 
@@ -21,7 +23,9 @@ const SharedLayout = () => {
       </header>
 
       <main>
-        <Outlet />
+        <Suspense fallback={<loader.ThreeDots />}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

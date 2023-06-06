@@ -16,7 +16,6 @@ const Reviews = () => {
     fetchReviews(movieId, controller)
       .then(data => {
         setError(null);
-        console.log(data);
         setReviews(data);
       })
       .catch(err => {
