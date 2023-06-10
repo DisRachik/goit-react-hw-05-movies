@@ -1,4 +1,5 @@
 import axios from 'axios';
+import NotImage from '../images/no-img.jpg';
 
 const API_KEY = '19345c148191d7f91b4cf12b6e616f39';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
@@ -7,6 +8,7 @@ const BASE_PARAMS = {
   api_key: API_KEY,
   language: 'uk-UA',
 };
+const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 export const fetchTrendingMovies = async ({ signal }) => {
   const params = { ...BASE_PARAMS };
@@ -28,13 +30,23 @@ export const fetchSearchMovies = async (query, { signal }) => {
   }));
 };
 
+const createUrl = url => (url ? `${BASE_IMG_URL}${url}` : NotImage);
+
 export const fetchAboutMovie = async (movie_id, { signal }) => {
   const params = { ...BASE_PARAMS };
   const response = await axios(`movie/${movie_id}`, { params, signal });
   const { title, vote_average, overview, genres, poster_path, release_date } =
     response.data;
-  const genre = genres.map(item => item.name).join(', ');
-  return { poster_path, title, vote_average, overview, genre, release_date };
+  return {
+    poster_path: createUrl(poster_path),
+    title,
+    vote_average,
+    overview,
+    genres: genres.map(item => item.name).join(', '),
+    release_date: release_date
+      ? ` - (${new Date(release_date).getFullYear()})`
+      : '',
+  };
 };
 
 export const fetchCast = async (movie_id, { signal }) => {
@@ -44,7 +56,7 @@ export const fetchCast = async (movie_id, { signal }) => {
     id,
     name,
     character,
-    profile_path,
+    profile_path: createUrl(profile_path),
   }));
 };
 

@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import NotImage from '../../images/no-img.jpg';
 import { loader } from 'components';
 import { fetchCast } from 'service/api';
 import { ActorGallery, ActorCard, ActorName, ActorRole } from './Cast.styled';
-
-const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -42,10 +39,7 @@ const Cast = () => {
         <ActorGallery>
           {actors.map(({ id, name, character, profile_path }) => (
             <ActorCard key={id}>
-              <img
-                src={profile_path ? `${BASE_IMG_URL}${profile_path}` : NotImage}
-                alt={name}
-              />
+              <img src={profile_path} alt={name} />
               <ActorName>{name}</ActorName>
               <ActorRole>{character}</ActorRole>
             </ActorCard>

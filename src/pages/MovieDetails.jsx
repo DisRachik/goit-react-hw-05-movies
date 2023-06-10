@@ -42,8 +42,7 @@ const MovieDetails = () => {
             <TiArrowBackOutline /> назад
           </ButtonLink>
           {isLoading && <loader.CardLoader />}
-          {error && <p>{error}</p>}
-          <MovieCard {...infoFilm} />
+          {error ? <p>{error}</p> : <MovieCard {...infoFilm} />}
         </Container>
       </Section>
 
